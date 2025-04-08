@@ -1,0 +1,2 @@
+review all the files and extract all the endpoints information and the request logic with the varriable and placeholder details into a json file named config.json then use that config file to handle the functionality by linking to that config file. 
+Modify the current html files as php file then let it perform without additional files which are on that php folder 
