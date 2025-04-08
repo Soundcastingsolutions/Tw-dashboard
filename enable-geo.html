@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Account Manager - Enable GEO</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="dashboard.html" class="logo">
+                    <img src="https://www.twilio.com/assets/icons/twilio-icon-512.png" alt="Twilio Logo" height="30">
+                    Twilio Manager
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="numbers.html"><i class="fas fa-phone"></i> Numbers</a></li>
+                    <li><a href="dialer.html"><i class="fas fa-phone-volume"></i> Dialer</a></li>
+                    <li><a href="enable-geo.html" class="active"><i class="fas fa-globe"></i> Enable GEO</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="geo-container">
+        <div class="container">
+            <div class="geo-card">
+                <h1 class="geo-title">Enable Geographic Permissions</h1>
+                <p class="geo-description">
+                    Enable dialing to all countries with a single click. This will allow your Twilio account to make
+                    calls to any country worldwide.
+                </p>
+
+                <button class="btn btn-primary" id="enable-geo-btn">
+                    <i class="fas fa-globe"></i> Enable All Geographic Permissions
+                </button>
+
+                <div class="geo-response" id="geo-response">
+                    <!-- Response will be shown here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/enable-geo.js"></script>
+</body>
+
+</html>

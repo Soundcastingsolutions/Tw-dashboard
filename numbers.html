@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Account Manager - Phone Numbers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="dashboard.html" class="logo">
+                    <img src="https://www.twilio.com/assets/icons/twilio-icon-512.png" alt="Twilio Logo" height="30">
+                    Twilio Manager
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="numbers.html" class="active"><i class="fas fa-phone"></i> Numbers</a></li>
+                    <li><a href="dialer.html"><i class="fas fa-phone-volume"></i> Dialer</a></li>
+                    <li><a href="enable-geo.html"><i class="fas fa-globe"></i> Enable GEO</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="numbers-container">
+        <div class="container">
+            <div class="numbers-header">
+                <h1 class="dashboard-title">Phone Numbers</h1>
+                <button class="btn btn-primary" id="buy-number-btn">
+                    <i class="fas fa-plus"></i> Buy Number
+                </button>
+            </div>
+
+            <div id="numbers-loading" style="text-align: center; padding: 30px;">
+                <i class="fas fa-spinner fa-spin fa-2x"></i>
+                <p>Loading your phone numbers...</p>
+            </div>
+
+            <div id="numbers-table-container" style="display: none;">
+                <table class="numbers-table">
+                    <thead>
+                        <tr>
+                            <th>Phone Number</th>
+                            <th>Friendly Name</th>
+                            <th>Voice URL</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="numbers-table-body">
+                        <!-- Numbers will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="no-numbers-message" style="text-align: center; padding: 30px; display: none;">
+                <i class="fas fa-phone-slash fa-3x" style="color: var(--gray-color); margin-bottom: 15px;"></i>
+                <p>You don't have any phone numbers yet.</p>
+                <button class="btn btn-primary" style="margin-top: 15px;" id="buy-first-number-btn">
+                    <i class="fas fa-plus"></i> Buy Your First Number
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Buy Number Modal -->
+    <div class="buy-number-modal" id="buy-number-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Buy a New Phone Number</h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="search-container" style="display: none;">
+                <input type="text" class="search-input" id="number-search-input"
+                    placeholder="Enter country code (e.g., US) or area code">
+                <button class="search-button" id="search-numbers-btn">Search Available Numbers</button>
+            </div>
+            <div style="text-align: center; padding: 10px 0;">
+                <h3>Available Phone Numbers</h3>
+                <p>Select a number to purchase</p>
+            </div>
+            <div id="search-results-container" style="display: none;">
+                <select class="number-select" id="available-numbers-select" size="5">
+                    <!-- Available numbers will be populated here -->
+                </select>
+                <button class="btn btn-primary" id="purchase-number-btn" style="width: 100%;">
+                    <i class="fas fa-shopping-cart"></i> Purchase Selected Number
+                </button>
+            </div>
+            <div id="search-loading" style="text-align: center; padding: 20px; display: none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Searching for available numbers...</p>
+            </div>
+            <div id="search-error"
+                style="color: var(--danger-color); text-align: center; margin-top: 15px; display: none;"></div>
+        </div>
+    </div>
+
+    <script src="js/common.js"></script>
+    <script src="js/numbers.js"></script>
+</body>
+
+</html>

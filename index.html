@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Account Manager - Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <img src="https://www.twilio.com/assets/icons/twilio-icon-512.png" alt="Twilio Logo" width="80">
+            <h1>Twilio Account Manager</h1>
+            <p>Sign in with your Twilio credentials</p>
+        </div>
+        <form class="login-form" id="login-form">
+            <div class="form-group">
+                <label for="account-sid">Account SID</label>
+                <input type="text" id="account-sid" name="account-sid" placeholder="Enter your Account SID" required>
+            </div>
+            <div class="form-group">
+                <label for="auth-token">Auth Token</label>
+                <input type="password" id="auth-token" name="auth-token" placeholder="Enter your Auth Token" required>
+            </div>
+            <small style="color: var(--gray-color); display: block; margin: 5px 0 15px;">
+                Tip: You can paste "AccountSID:AuthToken" format into either field
+            </small>
+            <div class="form-group">
+                <button type="submit">Sign In</button>
+            </div>
+        </form>
+        <div id="error-message"
+            style="color: var(--danger-color); text-align: center; margin-top: 15px; display: none;"></div>
+    </div>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Account Manager - Dialer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="dashboard.html" class="logo">
+                    <img src="https://www.twilio.com/assets/icons/twilio-icon-512.png" alt="Twilio Logo" height="30">
+                    Twilio Manager
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="numbers.html"><i class="fas fa-phone"></i> Numbers</a></li>
+                    <li><a href="dialer.html" class="active"><i class="fas fa-phone-volume"></i> Dialer</a></li>
+                    <li><a href="enable-geo.html"><i class="fas fa-globe"></i> Enable GEO</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dialer-container">
+        <div class="container">
+            <h1 class="dashboard-title">Dialer</h1>
+
+            <div class="tabs">
+                <div class="tab active" id="tw-dialer-tab">TW Dialer</div>
+                <div class="tab" id="gs-dialer-tab">GS Dialer</div>
+                <div class="tab-action" id="add-gs-tab" title="Open new GS Dialer tab">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+
+            <!-- Tab container for dynamically added tabs -->
+            <div id="dynamic-tabs-container"></div>
+
+            <!-- TW Dialer Tab Content -->
+            <div class="tab-content active" id="tw-dialer-content">
+                <form class="dialer-form" id="tw-dialer-form">
+                    <div class="form-group">
+                        <label for="tw-from-number">From Number</label>
+                        <select id="tw-from-number" required>
+                            <option value="">Loading numbers...</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tw-to-numbers">To Numbers (one per line or comma-separated)</label>
+                        <textarea id="tw-to-numbers"
+                            placeholder="Enter destination numbers (e.g., +1234567890, +9876543210)"
+                            required></textarea>
+                        <small style="color: var(--gray-color);">Numbers will be automatically formatted with + if not
+                            included</small>
+                    </div>
+
+                    <div class="form-group" style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <label for="tw-runtime">Runtime (calls per number)</label>
+                            <input type="number" id="tw-runtime" min="1" max="100" value="1" required>
+                            <small style="color: var(--gray-color);">Number of times to dial each destination</small>
+                            <div class="infinity-loop-container">
+                                <input type="checkbox" id="tw-infinity-loop">
+                                <label for="tw-infinity-loop">Infinity Loop</label>
+                                <small style="color: var(--gray-color); display: block;">Loop until manually
+                                    stopped</small>
+                            </div>
+                        </div>
+                        <div style="flex: 2;">
+                            <label for="tw-speed">Request Speed</label>
+                            <div class="slider-container">
+                                <span>Slow</span>
+                                <input type="range" id="tw-speed" min="1" max="5" value="3" class="slider">
+                                <span>Fast</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="tw-submit-btn">
+                            <i class="fas fa-phone-volume"></i> Start Dialing
+                        </button>
+                    </div>
+
+                    <div class="progress-container" id="tw-progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" id="tw-progress"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <span id="tw-progress-text">0%</span>
+                            <button type="button" class="btn btn-danger" id="tw-stop-btn">
+                                <i class="fas fa-stop"></i> Stop
+                            </button>
+                        </div>
+                        <div id="tw-results-summary"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- GS Dialer Tab Content -->
+            <div class="tab-content" id="gs-dialer-content">
+                <form class="dialer-form" id="gs-dialer-form">
+                    <div class="form-group">
+                        <label for="gs-region">From Region</label>
+                        <select id="gs-region" required>
+                            <option value="usa">USA (+1)</option>
+                            <option value="uk">UK (+44)</option>
+                            <option value="asian">Asian Countries</option>
+                            <option value="european">European Countries</option>
+                        </select>
+                        <small style="color: var(--gray-color);">Last 4 digits will be randomly generated for each
+                            call</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gs-to-numbers">To Numbers (one per line or comma-separated)</label>
+                        <textarea id="gs-to-numbers"
+                            placeholder="Enter destination numbers (e.g., +1234567890, +9876543210)"
+                            required></textarea>
+                        <small style="color: var(--gray-color);">Numbers will be automatically formatted with + if not
+                            included</small>
+                    </div>
+
+                    <div class="form-group" style="display: flex; gap: 20px; align-items: flex-start;">
+                        <div style="flex: 1;">
+                            <label for="gs-runtime">Runtime (calls per number)</label>
+                            <input type="number" id="gs-runtime" min="1" max="100" value="1" required>
+                            <small style="color: var(--gray-color);">Number of times to dial each destination</small>
+                            <div class="infinity-loop-container">
+                                <input type="checkbox" id="gs-infinity-loop">
+                                <label for="gs-infinity-loop">Infinity Loop</label>
+                                <small style="color: var(--gray-color); display: block;">Loop until manually
+                                    stopped</small>
+                            </div>
+                        </div>
+                        <div style="flex: 2;">
+                            <label for="gs-speed">Request Speed</label>
+                            <div class="slider-container">
+                                <span>Slow</span>
+                                <input type="range" id="gs-speed" min="1" max="5" value="3" class="slider">
+                                <span>Fast</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" id="gs-submit-btn">
+                            <i class="fas fa-phone-volume"></i> Start Dialing
+                        </button>
+                    </div>
+
+                    <div class="progress-container" id="gs-progress-container">
+                        <div class="progress-bar">
+                            <div class="progress" id="gs-progress"></div>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                            <span id="gs-progress-text">0%</span>
+                            <button type="button" class="btn btn-danger" id="gs-stop-btn">
+                                <i class="fas fa-stop"></i> Stop
+                            </button>
+                        </div>
+                        <div id="gs-results-summary"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/dialer.js"></script>
+</body>
+
+</html>

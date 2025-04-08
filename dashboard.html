@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twilio Account Manager - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="dashboard.html" class="logo">
+                    <img src="https://www.twilio.com/assets/icons/twilio-icon-512.png" alt="Twilio Logo" height="30">
+                    Twilio Manager
+                </a>
+                <ul class="nav-links">
+                    <li><a href="dashboard.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="numbers.html"><i class="fas fa-phone"></i> Numbers</a></li>
+                    <li><a href="dialer.html"><i class="fas fa-phone-volume"></i> Dialer</a></li>
+                    <li><a href="enable-geo.html"><i class="fas fa-globe"></i> Enable GEO</a></li>
+                    <li><a href="#" id="logout-link"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Dashboard</h1>
+                <div id="account-name">Loading account information...</div>
+            </div>
+
+            <div class="dashboard-cards">
+                <!-- Account Type Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Account Type</h2>
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-value" id="account-type">-</div>
+                        <div class="card-label">Account Status: <span id="account-status">-</span></div>
+                        <div id="inherit-permission-container" style="margin-top: 15px; display: none;">
+                            <button class="btn btn-secondary" id="inherit-permission-btn">
+                                <i class="fas fa-key"></i> Inherit Permission
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subscription Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Subscription</h2>
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-value" id="subscription-type">-</div>
+                        <div class="card-label">Your current subscription plan</div>
+                    </div>
+                </div>
+
+                <!-- Balance Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="card-title">Account Balance</h2>
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-value" id="account-balance">-</div>
+                        <div class="card-label">Current available balance</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Account Information -->
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="card-title">Account Information</h2>
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <div class="card-body">
+                    <table style="width: 100%;">
+                        <tr>
+                            <td style="padding: 10px 0; font-weight: 500;">Account SID:</td>
+                            <td id="account-sid">-</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0; font-weight: 500;">Created:</td>
+                            <td id="account-created">-</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px 0; font-weight: 500;">Last Updated:</td>
+                            <td id="account-updated">-</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/common.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+
+</html>
